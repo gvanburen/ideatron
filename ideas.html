@@ -1,7 +1,15 @@
+<p>Select how many services you would like to use:</p>
+<select ng-model="serviceNumber">
+	<option>2</option>
+	<option>3</option>
+</select>
+<button ng-click="selectService()">Submit</button>
 <section>
 	<ul class="ideas">
 		<li ng-repeat="idea in ideas">
-			{{ idea }}
+			<a ng-href="{{ idea.humanURL}}"><img class="serviceLogo" ng-src="{{ idea.image }}"></a><br>
+			{{ idea.name }}<br>
+			{{ idea.description }}
 		</li>
 	</ul>
 </section>
