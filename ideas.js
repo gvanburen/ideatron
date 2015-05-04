@@ -75,12 +75,20 @@ angular.module('ideaTron',['ngRoute','ngAnimate'])
 	// }])
 	.controller('ideaCtrl',['$scope','$http', function($scope, $http){
 		$scope.selectService = function(){
-			var random = Math.floor(Math.random() * (217-$scope.serviceNumber));
-			console.log($scope.serviceNumber);
-			console.log(random);
-			$http.get("http://apis.io/api/search?q=all&skip=" + random + "&limit=" + $scope.serviceNumber).success(function(data){
-				$scope.ideas = data.data;
-				console.log(data);
+			// var random = Math.floor(Math.random() * (217-$scope.serviceNumber));
+			// console.log($scope.serviceNumber);
+			// console.log(random);
+			// $http.get("http://apis.io/api/search?q=all&skip=" + random + "&limit=" + $scope.serviceNumber).success(function(data){
+			// 	$scope.ideas = data.data;
+			// 	console.log(data);
+			// })
+			$http.get("http://apis.io/api/search?q=all&limit=217").success(function(data){
+				var random = data;
+				$scope.ideas = [];
+				for (i=0; i<$scope.serviceNumber;i++){
+					var num = Math.floor(Math.random() * 217);
+					$scope.ideas.push(random.data[num]);
+				}
 			})
 		}	
 	}])
