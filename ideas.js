@@ -1,8 +1,10 @@
 angular.module('ideaTron',['ngRoute','ngAnimate'])
+	.constant('FIREBASE_URL', 'https://burning-heat-343.firebaseio.com/ideas')
+	.factory('firebaseReference', function(FIREBASE_URL){
+		return new Firebase( FIREBASE_URL );
+	})
 	.config(['$routeProvider', function($routeProvider){
 		$routeProvider
-		//presents a login screen to user
-		//can choose to skip login
 		.when('/', {
 			templateUrl: 'main.html',
 			controller: 'mainCtrl'
@@ -20,21 +22,57 @@ angular.module('ideaTron',['ngRoute','ngAnimate'])
 			controller: 'ideaCtrl'
 		})
 	}])
-	.controller('mainCtrl', ['$scope', function($scope){
-
+	.controller('mainCtrl', ['$scope','$location', function($scope, $location){
+		$scope.logMeIn = function(){
+			var ref = new Firebase('https://burning-heat-343.firebaseio.com/ideas');//firebaseReference;
+			ref.authWithOAuthPopup("github", function(error, authData) {
+				if (error) {
+					console.log("Login Failed!", error);
+				} else {
+					console.log("Authenticated successfully with payload:", authData);
+					$location.path('/ideas');
+				}
+			});
+		}
+		$scope.logMeInAnon = function(){
+			var ref = new Firebase('https://burning-heat-343.firebaseio.com/ideas');//firebaseReference;
+			ref.authAnonymously(function(error, authData) {
+				if (error) {
+					console.log("Login Failed!", error);
+				} else {
+					console.log("Authenticated successfully with payload:", authData);
+					$location.path('/ideas');
+				}
+			});
+		}
 	}])
 	.controller('signupCtrl', ['$scope', function($scope){
 		
 	}])
-	.controller('loginCtrl', ['$scope', function($scope){
-		$scope.loginEmail = "";
-		$scope.loginPassword = "";
-		$scope.signIn = function(email,password){
-			console.log(email, password);
-			$scope.loginEmail = "";
-			$scope.loginPassword = "";
-		}
-	}])
+	// .controller('loginCtrl', ['$scope', function($scope){
+	// 	$scope.signIn = function(){
+	// 		var ref = firebaseReference;
+	// 		ref.authWithOAuthPopup("github", function(error, authData) {
+	// 			if (error) {
+	// 				console.log("Login Failed!", error);
+	// 			} else {
+	// 				console.log("Authenticated successfully with payload:", authData);
+	// 			}
+	// 		});
+	// 		$scope.loginEmail = "";
+	// 		$scope.loginPassword = "";
+	// 	}
+	// 	$scope.signInAnon = function(){
+	// 		var ref = firebaseReference;
+	// 		ref.authAnonymously(function(error, authData) {
+	// 			if (error) {
+	// 				console.log("Login Failed!", error);
+	// 			} else {
+	// 				console.log("Authenticated successfully with payload:", authData);
+	// 			}
+	// 		});
+	// 	}
+	// }])
 	.controller('ideaCtrl',['$scope','$http', function($scope, $http){
 		$scope.selectService = function(){
 			var random = Math.floor(Math.random() * (217-$scope.serviceNumber));

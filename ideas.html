@@ -5,11 +5,11 @@
 </select>
 <button ng-click="selectService()">Submit</button>
 <section>
-	<ul class="ideas">
-		<li ng-repeat="idea in ideas">
+	<ul class="flex-container">
+		<li class="flex-item" ng-repeat="idea in ideas">
 			<a ng-href="{{ idea.humanURL}}"><img class="serviceLogo" ng-src="{{ idea.image }}"></a><br>
-			{{ idea.name }}<br>
-			{{ idea.description }}
+			<h3>{{ idea.name }}</h3>
+			<p>{{ idea.description }}</p>
 		</li>
 	</ul>
 </section>

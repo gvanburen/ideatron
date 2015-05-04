@@ -6,11 +6,24 @@
 	list-style: none;
 }
 
-.ideas {
+.flex-container {
 	list-style: none;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+
+.flex-container > a {
+	text-align: center;
+}
+
+.flex-item {
+	width: 350px;
+	height: auto;
+	margin: 0 auto;
 }
 
 .serviceLogo {
-	height: 50px;
-	width: 50px;
+	max-width: 350px;
+	height: 100px;
 }
