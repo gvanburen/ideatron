@@ -9,6 +9,7 @@
 		<li class="flex-item" ng-repeat="idea in ideas">
 			<a ng-href="{{ idea.humanURL}}"><img class="serviceLogo" ng-src="{{ idea.image }}"></a><br>
 			<h3>{{ idea.name }}</h3>
+			<p class="tag" ng-repeat="tags in idea.tags"><em>{{ tags }};</em><p>
 			<p>{{ idea.description }}</p>
 		</li>
 	</ul>

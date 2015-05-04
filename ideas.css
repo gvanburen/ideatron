@@ -27,3 +27,8 @@
 	max-width: 350px;
 	height: 100px;
 }
+
+.tag {
+	display: inline-block;
+	margin: 0.2em;
+}
