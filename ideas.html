@@ -1,7 +1,6 @@
 <p>Select how many services you would like to use:</p>
 <select ng-model="serviceNumber">
-	<option>2</option>
-	<option>3</option>
+	<option ng-repeat="number in numbers">{{ number }}</option>
 </select>
 <button ng-click="selectService()">Submit</button>
 <section>
@@ -9,8 +8,20 @@
 		<li class="flex-item" ng-repeat="idea in ideas">
 			<a ng-href="{{ idea.humanURL}}"><img class="serviceLogo" ng-src="{{ idea.image }}"></a><br>
 			<h3>{{ idea.name }}</h3>
-			<p class="tag" ng-repeat="tags in idea.tags"><em>{{ tags }};</em><p>
+			<p class="tag" ng-repeat="tags in idea.tags track by $index"><em>{{ tags }};</em><p>
 			<p>{{ idea.description }}</p>
 		</li>
 	</ul>
+</section>
+<button ng-show="loggedIn" ng-click="logOut()">Log Out</button>
+<section>
+	<h4 ng-show="loggedIn">Recent ideas:<h4>
+	<ol ng-show="loggedIn">
+		<li ng-repeat="item in prevIdeas">
+			{{ item.$id }}
+			<ul>
+				<li ng-repeat="child in item"><a ng-href="{{child.humanURL}}">{{ child.name }}</a></li>
+			</ul>
+		</li>
+	</ol>
 </section>
