@@ -47,10 +47,6 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 					console.log("Login Failed!", error);
 					}
 				} else {
-					// ref.child(authData.uid).set({
-					// 	provider: authData.provider,
-					// 	name: authData.github.displayName
-					// });
 					$rootScope.userId = authData.uid;
 					$rootScope.loggedIn = true;
 					$location.path('/ideas');
@@ -65,10 +61,6 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 				if (error) {
 					console.log("Login Failed!", error);
 				} else {
-					// ref.child(authData.uid).set({
-					// 	provider: authData.provider,
-					// 	name: authData
-					// });
 					$rootScope.userId = authData.uid;
 					console.log("Authenticated successfully with payload:", authData);
 					$location.path('/ideas');
@@ -77,32 +69,9 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 			});
 		}
 	}])
-	.controller('signupCtrl', ['$scope', function($scope){
-		
-	}])
+	// .controller('signupCtrl', ['$scope', function($scope){
+	// }])
 	// .controller('loginCtrl', ['$scope', function($scope){
-	// 	$scope.signIn = function(){
-	// 		var ref = firebaseReference;
-	// 		ref.authWithOAuthPopup("github", function(error, authData) {
-	// 			if (error) {
-	// 				console.log("Login Failed!", error);
-	// 			} else {
-	// 				console.log("Authenticated successfully with payload:", authData);
-	// 			}
-	// 		});
-	// 		$scope.loginEmail = "";
-	// 		$scope.loginPassword = "";
-	// 	}
-	// 	$scope.signInAnon = function(){
-	// 		var ref = firebaseReference;
-	// 		ref.authAnonymously(function(error, authData) {
-	// 			if (error) {
-	// 				console.log("Login Failed!", error);
-	// 			} else {
-	// 				console.log("Authenticated successfully with payload:", authData);
-	// 			}
-	// 		});
-	// 	}
 	// }])
 	.controller('ideaCtrl',['$rootScope','$scope','$http','$location','firebaseReference', function($rootScope, $scope, $http, $location, firebaseReference){
 		$scope.numbers = [1,2,3];
@@ -118,10 +87,7 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 			}
 			
 		}
-		
-		// var userId = $rootScope.userId;
-		console.log(userId);
-		// var ref = firebaseReference;
+		// console.log(userId);
 		var userRef = ref.child(userId);
 		userRef.once("value", function(snapshot){
 			$scope.prevIdeas = snapshot.val();
@@ -148,11 +114,4 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 			$scope.loggedIn = false;
 			$location.path('/');
 		}
-		// userRef.push($scope.ideas);
-		// userRef.on("value", function(snapshot){
-		// 	console.log(snapshot.val());
-		// 	console.log(snapshot);
-		// 	$scope.prevIdeas = snapshot.val();
-		// 	console.log($scope.prevIdeas);
-		// })
 	}])

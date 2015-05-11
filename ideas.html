@@ -1,3 +1,7 @@
+<section class="header">
+	<a href="#/" class="logo"><h1>ideaTron 2000</h1></a>
+</section>
+<button ng-show="loggedIn" ng-click="logOut()">Log Out</button>
 <p>Select how many services you would like to use:</p>
 <select ng-model="serviceNumber">
 	<option ng-repeat="number in numbers">{{ number }}</option>
@@ -13,7 +17,6 @@
 		</li>
 	</ul>
 </section>
-<button ng-show="loggedIn" ng-click="logOut()">Log Out</button>
 <section>
 	<h4 ng-show="loggedIn">Recent ideas:<h4>
 	<ol ng-show="loggedIn">
