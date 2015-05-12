@@ -1,12 +1,22 @@
-<section class="header">
-	<a href="#/" class="logo"><h1>ideaTron 2000</h1></a>
-</section>
-<button ng-show="loggedIn" ng-click="logOut()">Log Out</button>
-<p>Select how many services you would like to use:</p>
-<select ng-model="serviceNumber">
-	<option ng-repeat="number in numbers">{{ number }}</option>
-</select>
-<button ng-click="selectService()">Submit</button>
+<nav class="navbar navbar-default navbar-fixed">
+	<div class="contaier-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" id="brand" href="#/">ideatron</a>
+		</div>
+		<ul class="nav navbar-nav navbar-right" id="logoutBtn">
+			<li><a href=""><button type="button" class="btn btn-primary"ng-show="loggedIn" ng-click="logOut()">Log Out</button></a></li>
+		</ul>
+	</div>
+</nav>
+<div class="text-center">
+	<p>Select how many services you would like to use:</p>
+	<form class="form-inline">
+		<select class="form-control" ng-model="serviceNumber">
+			<option ng-repeat="number in numbers">{{ number }}</option>
+		</select>
+		<button type="submit" class="btn btn-primary" ng-click="selectService()">Submit</button>
+	</form>
+</div>
 <section>
 	<ul class="flex-container">
 		<li class="flex-item" ng-repeat="idea in ideas">
@@ -18,13 +28,28 @@
 	</ul>
 </section>
 <section>
-	<h4 ng-show="loggedIn">Recent ideas:<h4>
-	<ol ng-show="loggedIn">
-		<li ng-repeat="item in prevIdeas">
-			{{ item.$id }}
-			<ul>
-				<li ng-repeat="child in item"><a ng-href="{{child.humanURL}}">{{ child.name }}</a></li>
-			</ul>
-		</li>
-	</ol>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+		<h5 ng-show="loggedIn">Recent ideas:<h5>
+		<table class="table table-bordered text-left">
+			<tr>
+				<th>#</th>
+				<th>Service 1</th>
+				<th>Service 2</th>
+				<th>Service 3</th>
+			</tr>
+			<tr ng-repeat="item in prevIdeas">
+				<td>{{$index + 1}}</td>
+				<td ng-repeat="child in item">
+					<a ng-href="{{child.humanURL}}">
+						<p>{{ child.name }}</p>
+					</a>
+				</td>
+			</tr>
+		</table>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+	
 </section>

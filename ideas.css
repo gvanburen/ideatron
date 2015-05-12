@@ -6,7 +6,11 @@
 	height: 100vh;
 }
 
-.buttons {
+#logoutBtn li {
+	margin-right: 15px;
+}
+
+/*.buttons {
 	text-align: center;
 }
 
@@ -43,6 +47,13 @@
               border-color 0.3s ease-in;
 }
 
+*/
+
+#brand {
+	text-transform: uppercase;
+	color: #337AB7;
+	margin-top: 8px;
+}
 
 .logo {
 	text-decoration: none;
