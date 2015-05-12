@@ -1,9 +1,13 @@
 .landingPage {
-	background-image: url('../images/landing-page.png');
+	background-image: url('images/landing-page.png');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 	height: 100vh;
+}
+
+#loginBtn {
+	margin-top: 8px;
 }
 
 #logoutBtn li {
