@@ -6,48 +6,14 @@
 	height: 100vh;
 }
 
-#logoutBtn li {
+.loginBtn {
+	margin-top: 10px;
 	margin-right: 15px;
 }
 
-/*.buttons {
-	text-align: center;
+#logoutBtn li {
+	margin-right: 15px;
 }
-
-.buttons li {
-	display:inline-block;
-	text-decoration: none;
-	font-size: 0.8em;
-	margin: 5px;
-}
-
-.ghost-button {
-	display: inline-block;
-  	width: 175px;
-  	padding: .3em;
-  	color: #fff;
-  	background-color: transparent;
-  	border: 2px solid #fff;
-  	border-radius: 5px;
-  	text-align: center;
-  	outline: none;
-  	text-decoration: none;
-  	transition: color 0.5s ease-out,
-              background-color 0.5s ease-out,
-              border-color 0.5s ease-out;
-}
-
-.ghost-button:hover,
-.ghost-button:active {
-	background-color: #778899;
-  	border-color: #778899;
-  	color: #fff;
-  	transition: color 0.3s ease-in,
-              background-color 0.3s ease-in,
-              border-color 0.3s ease-in;
-}
-
-*/
 
 #brand {
 	text-transform: uppercase;
