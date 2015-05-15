@@ -4,12 +4,8 @@
 			<a class="navbar-brand" id="brand" href="#/">ideatron</a>
 		</div>
 		<ul class="nav navbar-nav navbar-right" id="logoutBtn">
-			<li>
-				<button type="button" class="btn btn-primary loginBtn" ng-click="login()">Login</button>
-			</li>
-			<li>
-				<button type="button" class="btn btn-primary loginBtn" ng-click="loginAnon()">Skip Login</button>
-			</li>
+			<li><a href=""><button type="button" class="btn btn-primary" ng-hide="loggedIn" ng-click="login()">Login</button></a></li>
+			<li><a href="#/"><button type="button" class="btn btn-primary" ng-show="loggedIn" ng-click="loginAnon()">Skip Login</button></a></li>
 		</ul>
 	</div>	
 </nav>
