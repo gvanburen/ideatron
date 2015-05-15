@@ -1,5 +1,5 @@
 .landingPage {
-	background-image: url('../images/landing-page.png');
+	background-image: url('images/landing-page.png');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -8,6 +8,9 @@
 
 .loginBtn {
 	margin-top: 10px;
+}
+
+#logoutBtn li {
 	margin-right: 15px;
 }
 
