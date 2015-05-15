@@ -6,15 +6,12 @@
 	height: 100vh;
 }
 
-.loginBtn {
-	margin-top: 10px;
+#mainPage {
+	background-color: transparent;
+	border-style: none;
 }
 
-#logoutBtn li {
-	margin-right: 15px;
-}
-
-#logoutBtn li {
+#logBtns {
 	margin-right: 15px;
 }
 
