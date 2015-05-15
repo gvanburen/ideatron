@@ -70,6 +70,7 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 		var ref = firebaseReference;
 		var authData = ref.getAuth();
 		console.log(authData);
+		//create factory for checking authData
 		if (authData){
 			$scope.userId = authData.uid;
 			var userId = $scope.userId;
@@ -81,8 +82,7 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 			}
 			
 		}
-		//console.log(userId);
-		console.log(userRef);
+		//create factory for calling/showing previous ideas
 		var userRef = ref.child(userId);
 		if (userId.indexOf("anonymous:") !== 0){
 			userRef.limitToLast(5).once("value", function(snapshot){
@@ -97,7 +97,10 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 			})
 		}
 		$scope.showMore = function(){
-			userRef.limitToLast(10).once("value", function(snapshot){
+			$scope.limitedIdeas = Object.keys($scope.prevIdeas).length;
+			var numb = $scope.limitedIdeas;
+			console.log(numb);
+			userRef.limitToLast(numb + 5).once("value", function(snapshot){
 				$scope.prevIdeas = snapshot.val();
 				$scope.$apply();
 			})
@@ -136,6 +139,28 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 					$scope.$apply();
 				})
 			})
+		}
+		//create factory for login
+		$scope.login = function(){
+			ref.authWithOAuthPopup("github", function(error, authData) {
+				if (error) {
+					if (error.code === "TRANSPORT_UNAVAILABLE") {
+						ref.authWithOAuthRedirect("github", function(error){
+							console.log("Login Failed!", error);
+						});
+					} else {
+					console.log("Login Failed!", error);
+					}
+				} else {
+					$rootScope.userId = authData.uid;
+					$rootScope.loggedIn = true;
+					$window.location.assign('#/ideas');
+					//$location.path('/ideas');
+					$scope.$apply();
+					console.log("Authenticated successfully with payload:", authData);
+					
+				}
+			});
 		}
 		$scope.logOut = function(){
 			userRef.unauth();
