@@ -55,3 +55,76 @@
 	display: inline-block;
 	margin: 0.2em;
 }
+
+#rwd-table {
+  margin: 1em .3em;
+  min-width: 300px;
+  vertical-align: center;
+}
+#rwd-table tr {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+#rwd-table th {
+  display: none;
+}
+#rwd-table td {
+  display: block;
+}
+#rwd-table a {
+	display: inline-block;
+}
+#rwd-table #deleteBtn {
+	margin-top: -1.5em;
+}
+/*#rwd-table td:first-child {
+  padding-top: .5em;
+}*/
+/*#rwd-table td:last-child {
+  padding-bottom: .5em;
+}*/
+#rwd-table td:before {
+  content: attr(data-th);
+  width: 6.5em;
+  display: inline-block;
+  margin-right: .5em;
+}
+
+@media (min-width: 700px) {
+  #rwd-table td:before {
+    display: none;
+  }
+}
+#rwd-table th, #rwd-table td {
+  text-align: left;
+}
+
+@media (min-width: 700px) {
+  #rwd-table th, #rwd-table td {
+    display: table-cell;
+    min-height: 3.75em;
+  }
+  #rwd-table th:first-child, #rwd-table td:first-child {
+    min-width: 81px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-right: 0;
+  }
+  #rwd-table th:last-child, #rwd-table td:last-child {
+    padding-right: 0;
+  }
+}
+
+#rwd-table {
+	overflow: hidden;
+}
+#rwd-table th, #rwd-table td {
+  min-height: 51px;
+}
+
+@media (min-width: 700px) {
+  #rwd-table th, #rwd-table td {
+    padding: .5em !important;
+    height: 50px;
+  }
+}

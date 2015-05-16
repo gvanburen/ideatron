@@ -28,7 +28,7 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 				console.log('log in to see recent ideas');
 			} else {
 				$scope.loggedIn = true;
-				$location.path('/ideas');	
+				//$location.path('/ideas');	
 			}
 			
 		}
@@ -45,8 +45,14 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 				} else {
 					$rootScope.userId = authData.uid;
 					$rootScope.loggedIn = true;
-					$location.path('/ideas');
-					$scope.$apply();
+					if($location.path('/about')){
+						$location.path('/ideas');
+						$scope.$apply();
+					} else {
+						$location.path('/ideas');
+						$scope.$apply();
+					}
+					// $scope.$apply();
 					console.log("Authenticated successfully with payload:", authData);
 					
 				}
@@ -107,12 +113,12 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 		}
 		$scope.clearData = function(){
 			userRef.remove();
-			$scope.$apply();
+			// $scope.$apply();
 			userRef.once("value", function(snapshot){
 				if(snapshot.val() == null){
 					$scope.limitedIdeas = 0;
 				}
-				$scope.$apply();
+				// $scope.$apply();
 			})
 		}
 		$scope.deleteMe = function(o){
@@ -136,7 +142,7 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 					console.log(snapshot.val());
 					$scope.prevIdeas = snapshot.val();
 					$scope.limitedIdeas = Object.keys($scope.prevIdeas).length;
-					$scope.$apply();
+					// $scope.$apply();
 				})
 			})
 		}
@@ -154,9 +160,8 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 				} else {
 					$rootScope.userId = authData.uid;
 					$rootScope.loggedIn = true;
-					$window.location.assign('#/ideas');
-					//$location.path('/ideas');
-					$scope.$apply();
+					$window.location.reload('#/ideas');
+					//$scope.$apply();
 					console.log("Authenticated successfully with payload:", authData);
 					
 				}

@@ -16,7 +16,8 @@
 		<select class="form-control" ng-model="serviceNumber">
 			<option ng-repeat="number in numbers">{{ number }}</option>
 		</select>
-		<button type="submit" class="btn btn-primary" ng-click="selectService()">Submit</button>
+		</br>
+		<button type="submit" class="btn btn-primary btn-block" ng-click="selectService()">Submit</button>
 	</form>
 </div>
 </br>
@@ -39,26 +40,26 @@
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
 		<h5 ng-show="loggedIn">Recent ideas:<h5>
-		<table class="table table-bordered text-left">
+		<table class="table table-bordered text-left" id="rwd-table">
 			<tr>
-				<th class="col-md-1">#</th>
-				<th class="col-md-3">Service 1</th>
-				<th class="col-md-3">Service 2</th>
-				<th class="col-md-3">Service 3</th>
+				<th class="col-md-1" data-th="#">#</th>
+				<th class="col-md-3" data-th="Service:">Service 1</th>
+				<th class="col-md-3" data-th="Service:">Service 2</th>
+				<th class="col-md-3" data-th="Service:">Service 3</th>
 			</tr>
 			<tr ng-repeat="(key,item) in prevIdeas" ng-mouseenter="show = true" ng-mouseleave="show = false">
-				<td ng-show="show">
-					<button type="button" class="btn btn-primary btn-small" ng-show="show" ng-click="deleteMe(key)">Delete
+				<td ng-show="show" id="deleteBtn">
+					<button type="button" class="btn btn-primary btn-small btn-block" ng-show="show" ng-click="deleteMe(key)">Delete
 					</button>
 				</td>
-				<td ng-hide="show">{{$index + 1}}</td>
-				<td ng-repeat="child in item">
+				<td ng-hide="show" data-th="#">{{$index + 1}}</td>
+				<td ng-repeat="child in item" data-th="Service:">
 					<a ng-href="{{child.humanURL}}">
 						<p>{{ child.name }}</p>
 					</a>
 				</td>
-				<td ng-show="item.length<2">-</td>
-				<td ng-show="item.length<3">-</td>
+				<td ng-show="item.length<2" data-th="Service:">-</td>
+				<td ng-show="item.length<3" data-th="Service:">-</td>
 				
 			</tr>
 		</table>
