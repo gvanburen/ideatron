@@ -170,7 +170,7 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 		$scope.logOut = function(){
 			userRef.unauth();
 			$scope.loggedIn = false;
-			$window.location.assign('/');
+			$window.location.assign('#/');
 		}
 
 	}])
