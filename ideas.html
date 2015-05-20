@@ -1,71 +1,78 @@
-<nav class="navbar navbar-default navbar-fixed">
-	<div class="contaier-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" id="brand" href="#/">ideatron</a>
-		</div>
-		<ul class="nav navbar-nav navbar-right" id="logBtns">
-			<li><a href="#/about"><button type="button" class="btn btn-primary">About</button></a></li>
-			<li><a href=""><button type="button" class="btn btn-primary" ng-hide="loggedIn" ng-click="login()">Login</button></a></li>
-			<li><a href="#/"><button type="button" class="btn btn-primary" ng-show="loggedIn" ng-click="logOut()">Log Out</button></a></li>
-		</ul>
-	</div>
+<nav class="white" role="navigation">
+  <div class="nav-wrapper container"><a id="logo-container" href="#/" class="brand-logo teal-text">IDEATRON</a>
+  <ul class="right hide-on-med-and-down">
+    <li><a class="teal-text" href="#/about">About</a></li>
+    <li><a class="teal-text" href="" ng-click="login()">Login</a></li>
+    <li><a class="teal-text" href="" ng-click="loginAnon()">Skip</a></li>     
+  </ul>
+
+  <ul id="nav-mobile" class="side-nav teal-text">
+    <li><a href="#/about">About</a></li>
+    <li><a href="" ng-click="login()">Login</a></li>
+    <li><a href="" ng-click="loginAnon()">Skip</a></li>        
+  </ul>
+  
+  <a href="" ng-click="showSideNav()" data-activates="nav-mobile" class="button-collapse md-primary"><i class="mdi-navigation-menu teal-text"></i></a>
+  </div>
 </nav>
-<div class="text-center">
-	<p>Select how many services you would like to use:</p>
-	<form class="form-inline">
-		<select class="form-control" ng-model="serviceNumber">
-			<option ng-repeat="number in numbers">{{ number }}</option>
-		</select>
-		<button type="submit" class="btn btn-primary" ng-click="selectService()">Submit</button>
-	</form>
-</div>
-</br>
-<div class="row">
-	<div class="col-md-1"></div>
-	<div class="col-md-10">
-	<ul class="flex-container">
-		<li class="flex-item" ng-repeat="idea in ideas">
-			<a ng-href="{{ idea.humanURL}}"><img class="serviceLogo" ng-src="{{ idea.image }}"></a><br>
-			<h4>{{ idea.name }}</h4>
-			<p class="tag" ng-repeat="tags in idea.tags track by $index"><em>{{ tags }};</em></p>
-			<p>{{ idea.description }}</p>
-		</li>
-	</ul>
+<div class="section">
+	<div class="container">
+		<div class="row">
+    		<form class="col s12">
+    			<h5 class="center-align">Select how many services you would like to use:</h5>
+     			<div class="row center-align">
+     				<div class="input-field col s3 offset-s2">
+     					<select class="browser-default" ng-model="serviceNumber">
+     						<option ng-repeat="number in numbers">{{ number }}</option>
+		    			</select>
+		  			</div>
+					<button type="submit" class="btn-large teal waves-effect waves-grey" ng-click="selectService()">Submit</button>
+		  		</div>
+		  	</form>
+		</div>
 	</div>
-	<div class="col-md-1"></div>
+ </div>
+</br>
+<div class="row center-align">
+	<div class="col center-align" ng-class="classy(ideas, $index)" ng-repeat="idea in ideas">
+		<a ng-href="{{ idea.humanURL}}"><img class="serviceLogo" ng-src="{{ idea.image }}"></a><br>
+		<h4>{{ idea.name }}</h4>
+		<p class="tag" ng-repeat="tags in idea.tags track by $index"><em>{{ tags }};</em></p>
+		<p>{{ idea.description }}</p>
+	</div>
 </div>
 <section ng-show="loggedIn && limitedIdeas > 0">
-	<div class="row">
-		<div class="col-md-1"></div>
-		<div class="col-md-10">
-		<h5 ng-show="loggedIn">Recent ideas:<h5>
-		<table class="table table-bordered text-left" id="rwd-table">
-			<tr>
-				<th class="col-md-1" data-th="#">#</th>
-				<th class="col-md-3" data-th="Service:">Service 1</th>
-				<th class="col-md-3" data-th="Service:">Service 2</th>
-				<th class="col-md-3" data-th="Service:">Service 3</th>
-			</tr>
-			<tr ng-repeat="(key,item) in prevIdeas" ng-mouseenter="show = true" ng-mouseleave="show = false">
-				<td ng-show="show" id="deleteBtn">
-					<button type="button" class="btn btn-primary btn-small btn-block" ng-show="show" ng-click="deleteMe(key)">Delete
-					</button>
-				</td>
-				<td ng-hide="show" data-th="#">{{$index + 1}}</td>
-				<td ng-repeat="child in item" data-th="Service:">
-					<a ng-href="{{child.humanURL}}">
-						<p>{{ child.name }}</p>
-					</a>
-				</td>
-				<td ng-show="item.length<2" data-th="Service:">-</td>
-				<td ng-show="item.length<3" data-th="Service:">-</td>
-				
-			</tr>
+	<div class="container">
+	<div class="row center-align">
+		<table class="col s12 bordered center-align" id="rwd-table">
+			<thead class="row">
+				<tr>
+					<th data-th="#">#</th>
+					<th data-th="Service:">Service 1</th>
+					<th data-th="Service:">Service 2</th>
+					<th data-th="Service:">Service 3</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="(key,item) in prevIdeas" ng-mouseenter="show = true" ng-mouseleave="show = false">
+					<td class="row" ng-show="show" data-th="#" id="deleteBtn">
+						<button type="button" class="btn teal waves-effect waves-grey center valign" ng-show="show" ng-click="deleteMe(key)">Delete
+						</button>
+					</td>
+					<td ng-hide="show" data-th="#">{{$index + 1}}</td>
+					<td ng-repeat="child in item" data-th="Service:">
+						<a ng-href="{{child.humanURL}}">
+							<p class="amber-text darken-4">{{ child.name }}</p>
+						</a>
+					</td>
+					<td ng-show="item.length<2" data-th="Service:">-</td>
+					<td ng-show="item.length<3" data-th="Service:">-</td>	
+				</tr>
+			</tbody>
 		</table>
 		</div>
-		<div class="col-md-1"></div>
 	</div>
-	<div class="row text-center">
+	<div class="row center align">
 	<button type="button" class="btn btn-primary" ng-show="loggedIn" ng-click="showMore()">Show More</button>
 	<button type="button" class="btn btn-primary" ng-show="loggedIn" ng-click="clearData()">Clear All</button>
 	</div>

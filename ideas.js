@@ -32,6 +32,9 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 			}
 			
 		}
+		$scope.showSideNav = function(){
+			$('.button-collapse').sideNav();
+		}
 		$scope.login = function(){
 			ref.authWithOAuthPopup("github", function(error, authData) {
 				if (error) {
@@ -87,6 +90,9 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 				$scope.loggedIn = true;
 			}
 			
+		}
+		$scope.showSideNav = function(){
+			$('.button-collapse').sideNav();
 		}
 		//create factory for calling/showing previous ideas
 		var userRef = ref.child(userId);
@@ -171,6 +177,19 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 			userRef.unauth();
 			$rootScope.loggedIn = false;
 			$location.path('/');
+		}
+		$scope.classy = function(idea, idx){
+			if (idea.length == 1){
+				return "s4 offset-s4"
+			} else if (idea.length == 2) {
+				if (idx == 0) {
+					return "s4 offset-s2"
+				} else {
+					return "s4"
+				}
+			} else {
+				return "s4"
+			}
 		}
 
 	}])

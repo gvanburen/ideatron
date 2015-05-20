@@ -1,23 +1,30 @@
-<nav class="navbar navbar-default navbar-fixed">
-	<div class="contaier-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" id="brand" href="#/">ideatron</a>
-		</div>
-		<ul class="nav navbar-nav navbar-right" id="logBtns">
-			<li><a href=""><button type="button" class="btn btn-primary" ng-hide="loggedIn" ng-click="login()">Login</button></a></li>
-			<li><a href=""><button type="button" class="btn btn-primary" ng-hide="loggedIn" ng-click="loginAnon()">Skip Login</button></a></li>
-		</ul>
-	</div>	
+<nav class="white" role="navigation">
+  <div class="nav-wrapper container"><a id="logo-container" href="#/" class="brand-logo teal-text">IDEATRON</a>
+  <ul class="right hide-on-med-and-down">
+    <li><a class="teal-text" href="#/about">About</a></li>
+    <li><a class="teal-text" href="" ng-click="login()">Login</a></li>
+    <li><a class="teal-text" href="" ng-click="loginAnon()">Skip</a></li>     
+  </ul>
+
+  <ul id="nav-mobile" class="side-nav teal-text">
+    <li><a href="#/about">About</a></li>
+    <li><a href="" ng-click="login()">Login</a></li>
+    <li><a href="" ng-click="loginAnon()">Skip</a></li>        
+  </ul>
+  
+  <a href="" ng-click="showSideNav()" data-activates="nav-mobile" class="button-collapse md-primary"><i class="mdi-navigation-menu teal-text"></i></a>
+  </div>
 </nav>
-<div class="container-fluid">
-	<div class="row text-center">
-		<div class="col-md-2"></div>
-		<div class="col-md-8">
+<div class="section no-pad-bot valign-wrapper">
+  <div class="container">
+    <div class="row center valign">
+    	<div class="col s12 l6">
 			<h3>What is it?</h3>
 			<p>IDEATRON is here to help you generate app ideas by presenting you with randomly selected APIs to use.</p>
+		</div>
+		<div class="col s12 l6">
 			<h3>How to use it?</h3>
 			<p>Login with your Github credtials (if you'd like to see previously generated ideas) and select the number of services you would like to use. IDEATRON will then show you what you possible APIs to combine to create your app.</p>
 		</div>
-		<div class="col-md-2"></div>
 	</div>
 </div>

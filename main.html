@@ -1,12 +1,26 @@
-<section class="landingPage">
-<nav class="navbar navbar-default navbar-fixed" id="mainPage">
-<div class="container-fluid">
-		<ul class="nav navbar-nav navbar-right" id="logBtns">
-			<li><a href="#/about"><button type="button" class="btn btn-primary" ng-hide="loggedIn">About</button></a></li>
-			<li><a href=""><button type="button" class="btn btn-primary" ng-hide="loggedIn" ng-click="login()">Login</button></a></li>
-			<li><a href=""><button type="button" class="btn btn-primary" ng-hide="loggedIn" ng-click="loginAnon()">Skip Login</button></a></li>
-			<li><a href="#/ideas"><button type="button" class="btn btn-primary" ng-show="loggedIn">Get Ideas</button></a></li>
-		</ul>
-</div>
+<nav class="white" role="navigation">
+  <div class="nav-wrapper container"><a id="logo-container" href="#/" class="brand-logo teal-text">IDEATRON</a>
+  <ul class="right hide-on-med-and-down">
+    <li><a class="teal-text" href="#/about">About</a></li>
+    <li><a class="teal-text" href="" ng-click="login()">Login</a></li>
+    <li><a class="teal-text" href="" ng-click="loginAnon()">Skip</a></li>     
+  </ul>
+
+  <ul id="nav-mobile" class="side-nav teal-text">
+    <li><a href="#/about">About</a></li>
+    <li><a href="" ng-click="login()">Login</a></li>
+    <li><a href="" ng-click="loginAnon()">Skip</a></li>        
+  </ul>
+  
+  <a href="" ng-click="showSideNav()" data-activates="nav-mobile" class="button-collapse md-primary"><i class="mdi-navigation-menu teal-text"></i></a>
+  </div>
 </nav>
-</section>
+
+<div class="section no-pad-bot valign-wrapper" id="index-banner">
+  <div class="container">
+    <div class="row center valign">
+      <div style="height: 11em;"></div>
+      <a href="#/ideas" id="download-button" class="btn-large teal waves-effect waves-grey">Get Started</a>
+    </div>
+  </div>
+</div>

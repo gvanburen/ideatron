@@ -1,9 +1,10 @@
 .landingPage {
-	background-image: url('images/landing-page.png');
+	background-color: cream;
+	/*background-image: url('images/landing-page.png');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	height: 100vh;
+	height: 100vh;*/
 }
 
 #mainPage {
@@ -75,14 +76,9 @@
 	display: inline-block;
 }
 #rwd-table #deleteBtn {
-	margin-top: -1.5em;
+	margin-bottom: 0;
+  padding-bottom: 0;
 }
-/*#rwd-table td:first-child {
-  padding-top: .5em;
-}*/
-/*#rwd-table td:last-child {
-  padding-bottom: .5em;
-}*/
 #rwd-table td:before {
   content: attr(data-th);
   width: 6.5em;
@@ -105,7 +101,7 @@
     min-height: 3.75em;
   }
   #rwd-table th:first-child, #rwd-table td:first-child {
-    min-width: 81px;
+    min-width: 135px;
     padding-left: 0;
     padding-right: 0;
     margin-right: 0;
@@ -117,9 +113,6 @@
 
 #rwd-table {
 	overflow: hidden;
-}
-#rwd-table th, #rwd-table td {
-  min-height: 51px;
 }
 
 @media (min-width: 700px) {
