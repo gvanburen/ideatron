@@ -6,15 +6,15 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 	.config(['$routeProvider', function($routeProvider){
 		$routeProvider
 		.when('/', {
-			templateUrl: '../pages/main.html',
+			templateUrl: './pages/main.html',
 			controller: 'mainCtrl'
 		})
 		.when('/about', {
-			templateUrl: '../pages/about.html',
+			templateUrl: './pages/about.html',
 			controller: 'mainCtrl'
 		})
 		.when('/ideas',{
-			templateUrl: '../pages/ideas.html',
+			templateUrl: './pages/ideas.html',
 			controller: 'ideaCtrl'
 		})
 	}])
