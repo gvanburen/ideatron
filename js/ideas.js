@@ -33,7 +33,9 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 			
 		}
 		$scope.showSideNav = function(){
-			$('.button-collapse').sideNav();
+			$('.button-collapse').sideNav({
+				closeOnClick: true
+			});
 		}
 		$scope.login = function(){
 			ref.authWithOAuthPopup("github", function(error, authData) {
@@ -92,7 +94,9 @@ angular.module('ideaTron',['ngRoute','ngAnimate','firebase'])
 			
 		}
 		$scope.showSideNav = function(){
-			$('.button-collapse').sideNav();
+			$('.button-collapse').sideNav({
+				closeOnClick: true
+			});
 		}
 		//create factory for calling/showing previous ideas
 		var userRef = ref.child(userId);
