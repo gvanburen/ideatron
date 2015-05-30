@@ -7,11 +7,11 @@
  */
 
 #index-banner {
-	background-image: url('../images/landing-page.png');
+	background-image: url('../images/landing-page-1.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	height: 100vh;
+	height: 80vh;
 }
 
 .icon-block {

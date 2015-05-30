@@ -1,14 +1,14 @@
 <nav class="white" role="navigation">
   <div class="nav-wrapper container"><a id="logo-container" href="#/" class="brand-logo teal-text">IDEATRON</a>
   <ul class="right hide-on-med-and-down">
-    <li><a class="teal-text" href="#/about">About</a></li>
+    <li><a class="teal-text" href="about">About</a></li>
     <li><a class="teal-text" ng-hide="loggedIn" href="" ng-click="login()">Login</a></li>
     <li><a class="teal-text" ng-show="loggedIn" href="" ng-click="logOut()">Logout</a></li>
     <li><a class="teal-text" ng-hide="loggedIn" href="" ng-click="loginAnon()">Skip Login</a></li>     
   </ul>
 
   <ul id="nav-mobile" class="side-nav teal-text">
-    <li><a href="#/about">About</a></li>
+    <li><a href="about">About</a></li>
     <li><a href="" ng-hide="loggedIn" ng-click="login()">Login</a></li>
     <li><a href="" ng-show="loggedIn" ng-click="logOut()">Logout</a></li>
     <li><a href="" ng-hide="loggedIn" ng-click="loginAnon()">Skip Login</a></li>        
@@ -19,9 +19,53 @@
 </nav>
 <div class="section no-pad-bot valign-wrapper" id="index-banner">
   <div class="container">
+    <div class="row center">
+      <h4 class="header col s12 light white-text">Get randomly generated ideas for your next project</h4>
+    </div>
     <div class="row center valign">
-      <div style="height: 11em;"></div>
       <a href="#/ideas" id="download-button" class="btn-large teal waves-effect waves-grey">Get Started</a>
     </div>
+    <br><br>
   </div>
 </div>
+  <div class="container">
+    <a name="about"></a>
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="icon-block">
+            <h2 class="center orange-text"><i class="mdi-image-flash-on"></i></h2>
+            <h5 class="center">Speeds Up Development</h5>
+
+            <p class="light">Reduce the amount of time you spend on coming up with ideas or figuring out which APIs to use. Ideatron will do the heavy lighting and present you with possible services to incorporate into your app, just specify how many you'ld like to use.</p>
+          </div>
+        </div>
+
+       <!--  <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-orange-text"><i class="mdi-social-group"></i></h2>
+            <h5 class="center">User Experience Focused</h5>
+
+            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+          </div>
+        </div> -->
+
+        <div class="col s12 m6">
+          <div class="icon-block">
+            <h2 class="center orange-text"><i class="mdi-action-settings"></i></h2>
+            <h5 class="center">Long Term Memory</h5>
+
+            <p class="light">There's no need to write down any of the ideas. Just sign in with your Github account to be able to all your previously genereated ideas. </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br><br>
+
+    <div class="section">
+
+    </div>
+  </div>
