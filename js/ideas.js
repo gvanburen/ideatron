@@ -10,14 +10,14 @@ angular.module('ideaTron', ['ngRoute', 'ngAnimate', 'firebase'])
                     templateUrl: './pages/main.html',
                     controller: 'mainCtrl'
                 })
-                .when('/about', {
-                    templateUrl: './pages/about.html',
-                    controller: 'mainCtrl'
-                })
-                .when('/ideas', {
-                    templateUrl: './pages/ideas.html',
-                    controller: 'ideaCtrl'
-                })
+            // .when('/about', {
+            //     templateUrl: './pages/about.html',
+            //     controller: 'mainCtrl'
+            // })
+            .when('/ideas', {
+                templateUrl: './pages/ideas.html',
+                controller: 'ideaCtrl'
+            })
         }
     ])
     .controller('mainCtrl', ['$rootScope', '$scope', '$location', 'firebaseReference',
@@ -73,6 +73,7 @@ angular.module('ideaTron', ['ngRoute', 'ngAnimate', 'firebase'])
                         console.log("Login Failed!", error);
                     } else {
                         $rootScope.userId = authData.uid;
+                        $rootScope.loggedIn = false;
                         console.log("Authenticated successfully with payload:", authData);
                         $location.path('/ideas');
                         $scope.$apply();
@@ -91,6 +92,7 @@ angular.module('ideaTron', ['ngRoute', 'ngAnimate', 'firebase'])
     .controller('ideaCtrl', ['$rootScope', '$scope', '$http', '$location', '$window', 'firebaseReference',
         function($rootScope, $scope, $http, $location, $window, firebaseReference) {
             $scope.numbers = [1, 2, 3];
+            $scope.loggedIn = false;
             var ref = firebaseReference;
             var authData = ref.getAuth();
             if (authData) {
@@ -150,9 +152,25 @@ angular.module('ideaTron', ['ngRoute', 'ngAnimate', 'firebase'])
                 $http.get("http://apis.io/api/search?q=all&limit=217").success(function(data) {
                     var random = data;
                     $scope.ideas = [];
-                    for (i = 0; i < $scope.serviceNumber; i++) {
+                    for (var i = 0; i < $scope.serviceNumber; i++) {
                         var num = Math.floor(Math.random() * 217);
                         $scope.ideas.push(random.data[num]);
+                    }
+                    // clean up returned data
+                    for (var j = 0; j < $scope.ideas.length; j++) {
+                        if ($scope.ideas[j].tags instanceof Array) {
+                            var len = $scope.ideas[j].tags.length;
+                            for (var k = 0; k < len - 1; k++) {
+                                $scope.ideas[j].tags[k] += ",";
+                            }
+                        } else {
+                            var tmp = $scope.ideas[j].tags.split(", ");
+                            $scope.ideas[j].tags = tmp;
+                            var len = $scope.ideas[j].tags.length;
+                            for (var k = 0; k < len - 1; k++) {
+                                $scope.ideas[j].tags[k] += ",";
+                            }
+                        }
                     }
                     userRef.push($scope.ideas);
                     userRef.limitToLast(5).on("value", function(snapshot) {
@@ -180,7 +198,6 @@ angular.module('ideaTron', ['ngRoute', 'ngAnimate', 'firebase'])
                         $window.location.reload('#/ideas');
                         //$scope.$apply();
                         console.log("Authenticated successfully with payload:", authData);
-
                     }
                 });
             }
