@@ -33,7 +33,7 @@
 </br>
 <div class="row center-align">
 	<div class="col center-align" ng-class="classy(ideas, $index)" ng-repeat="idea in ideas">
-		<a ng-href="{{ idea.humanURL}}"><img class="serviceLogo" ng-src="{{ idea.image }}"></a><br>
+		<a ng-href="{{ idea.humanURL}}" target="_blank"><img class="serviceLogo" ng-src="{{ idea.image }}"></a><br>
 		<h4>{{ idea.name }}</h4>
 		<p class="tag" ng-repeat="tags in idea.tags track by $index"><em>{{ tags }}</em></p>
 		<p>{{ idea.description }}</p>

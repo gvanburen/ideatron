@@ -10,14 +10,10 @@ angular.module('ideaTron', ['ngRoute', 'ngAnimate', 'firebase'])
                     templateUrl: './pages/main.html',
                     controller: 'mainCtrl'
                 })
-            // .when('/about', {
-            //     templateUrl: './pages/about.html',
-            //     controller: 'mainCtrl'
-            // })
-            .when('/ideas', {
-                templateUrl: './pages/ideas.html',
-                controller: 'ideaCtrl'
-            })
+                .when('/ideas', {
+                    templateUrl: './pages/ideas.html',
+                    controller: 'ideaCtrl'
+                })
         }
     ])
     .controller('mainCtrl', ['$rootScope', '$scope', '$location', 'firebaseReference',
@@ -149,11 +145,11 @@ angular.module('ideaTron', ['ngRoute', 'ngAnimate', 'firebase'])
                 })
             }
             $scope.selectService = function() {
-                $http.get("http://apis.io/api/search?q=all&limit=217").success(function(data) {
+                $http.get("http://apis.io/api/search?q=all&limit=234").success(function(data) {
                     var random = data;
                     $scope.ideas = [];
                     for (var i = 0; i < $scope.serviceNumber; i++) {
-                        var num = Math.floor(Math.random() * 217);
+                        var num = Math.floor(Math.random() * 234);
                         $scope.ideas.push(random.data[num]);
                     }
                     // clean up returned data
